@@ -1,0 +1,23 @@
+Project Name: Notent Notables 
+
+Project Members:
+* Jansen Hillis (Lead, Integration, Database, TBD)
+* Saif Ahmed (Backend, TinyMCE, TBD)
+* Jessica Romano (Backend, TBD)
+* Patrick Llamas (Frontend, Backend, TBD)
+* Georgios Kokotinis (Frontend, TBD)
+
+Description: 
+A note taking web app where users can create notes and lists. 
+
+MVP Features:
+* Dashboard where logged in users can create, manage, sort, and delete their notes
+* WYSIWYG text editor allowing for Rich Text formatting and backend database storage
+* Login/Registration system
+
+Stretch Goals:
+* Mobile / Responsive
+* Tags / Categories for note metadata
+* "Folder-like" hierarchy structure for notes on the dashboard
+* TBD sharing concept
+* TBD
