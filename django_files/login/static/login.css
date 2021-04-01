@@ -1,48 +1,126 @@
-
 .wrapper {
-    width: 50%;
-    margin: 0 auto;
+	width: 50%;
+	margin: 0 auto;
+	align-items: center;
 }
 
 .container {
-    box-sizing: border-box;
-    width: 48%;
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
+	box-sizing: border-box;
+	width: 48%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+/* George add, position the log window */
+.container-log {
+	position: absolute;
+	text-align: center;
+	top: 20%;
+	width: 250px;
+	background-color: azure;
+	margin-left: 220px;
+	box-shadow: 2px 5px 10px rgba(5, 50, 54, 0.479);
+	border-radius: 10px;
+	z-index: 10;
+}
+/* George add, position the reg window */
+.container-reg {
+	position: absolute;
+	text-align: center;
+	top: 20%;
+	width: 250px;
+	background-color: azure;
+	margin-left: 220px;
+	box-shadow: 2px 5px 10px rgba(5, 50, 54, 0.479);
+	border-radius: 10px;
+}
+/* George add, style the Email/Password field */
+#login_email,
+#login_pw {
+	background: none;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+}
+/* George add, style Register */
+#first_name,
+#last_name,
+#reg_email,
+#reg_pw,
+#reg_confirm_pw {
+	background: none;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+}
+
+.btn {
+	margin-top: 10px;
+	align-items: flex-start;
+}
+/*  George add, thats for the log in button */
+.btn-button {
+	background: none;
+	text-decoration: underline;
+	border: none;
 }
 
 .messages {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 
 .messages > li.error {
-    color: red;
-    list-style-type: none;
-    margin: 0;
+	color: red;
+	list-style-type: none;
+	margin: 0;
 }
 
 .messages > li.success {
-    color: darkgreen;
-    list-style-type: none;
-    margin: 0
+	color: darkgreen;
+	list-style-type: none;
+	margin: 0;
 }
 
 .message_wrapper {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 form > label {
-    text-align: left;
-    width: 40%;
+	text-align: left;
+	width: 40%;
 }
 
 form > h1 {
-    text-align: center;
-    margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 form > button {
-    margin-top: 20px;
+	margin-top: 20px;
 }
-
+/* George add, keeps hidden the log window */
+.hidden {
+	display: none;
+}
+/* George add, blur background */
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(50px);
+	z-index: 5;
+}
+/* George add, X button to close log-in window */
+.close-window {
+	font-size: 1rem;
+	border: none;
+	margin-top: 10px;
+	background: none;
+	position: absolute;
+	cursor: pointer;
+	right: 1rem;
+	color: black;
+}
