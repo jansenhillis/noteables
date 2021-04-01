@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from noteables_project.decorators import authenticate_user
 from login.models import *
 from .models import *
 
 
-# @authenticate_user
+@authenticate_user
 def index(request):
     return render(request, 'index.html')
 
 
 #opens a specific note to view or edit
+@authenticate_user
 def open_note(request, id):
     context = {
         'note': Note.objects.get(id=id),
@@ -24,12 +26,14 @@ def open_note(request, id):
 
 
 #deletes a note from the database on dashboard
+@authenticate_user
 def delete_note(request, id):
     Note.objects.get(id=id).delete()
     return redirect('/')
 
 
 #opens a new note
+@authenticate_user
 def new_note(request):
     user = User.objects.get(id=request.session['user_id'])
     context = {
@@ -39,6 +43,7 @@ def new_note(request):
 
 
 #saves newly opened note 
+@authenticate_user
 def save_note(request):
     errors = Note.objects.validator(request.POST)
     if len(errors) > 0:
@@ -52,6 +57,7 @@ def save_note(request):
 
 
 #goes to homepage 
+@authenticate_user
 def dashboard(request):
     return redirect('/')
 
