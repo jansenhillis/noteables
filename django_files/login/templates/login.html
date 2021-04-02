@@ -38,7 +38,8 @@
 			<div class="container login">
 				<form action="login/" method="POST">
 					{% csrf_token %}
-					<h1>Login</h1>
+					<img src="{% static 'img/notent-logo.png' %}" alt="That Notent logo">
+
 					<input type="text" id="login_email" name="login_email" placeholder="Email" />
 					<input type="password" id="login_pw" name="login_pw" placeholder="Password" />
 					<button type="submit" class="btn btn-primary">Log In</button>
