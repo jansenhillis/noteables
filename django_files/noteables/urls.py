@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# localhost:8000/noteables/
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout', views.logout, name='logout'),

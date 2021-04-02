@@ -22,29 +22,19 @@
 					<input type="password" id="reg_confirm_pw" name="reg_confirm_pw" placeholder="Confirm Password" />
 					<button type="submit" class="btn btn-primary">Register</button>
 					<div class="not reg-note">Already have account?</div>
-					<a href="javascript:openwindow()">Sign in</a>
-					<!-- <div class="not reg-sign-in">Sign in</div> -->
+					<a href="#modal" class="close-modal">Sign in</a>
 				</form>
-				<div class="message_wrapper">
-					{% if messages %}
-					<ul class="messages">
-						{% for msg in messages %}
-						<li>{{ msg }}</li>
-						{% endfor %}
-					</ul>
-					{% endif %}
-				</div>
 			</div>
 			<div class="container login">
 				<form action="login/" method="POST">
 					{% csrf_token %}
-					<img src="{% static 'img/notent-logo.png' %}" alt="That Notent logo">
+					<img src="{% static 'img/notent-logo.png' %}" alt="That Notent logo" />
 
 					<input type="text" id="login_email" name="login_email" placeholder="Email" />
 					<input type="password" id="login_pw" name="login_pw" placeholder="Password" />
 					<button type="submit" class="btn btn-primary">Log In</button>
 					<div class="not log-note">Don't have an account?</div>
-					<div class="not log-sign-in">Create your account</div>
+					<a href="#modal" class="modal-trigger">Create Account</a>
 					<div class="message_wrapper">
 						{% if messages %}
 						<ul class="messages">
