@@ -7,7 +7,7 @@ from .models import *
 
 @authenticate_user
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'dashboard.html')
 
 
 #opens a specific note to view or edit
@@ -17,7 +17,7 @@ def open_note(request, id):
         'note': Note.objects.get(id=id),
         'user': User.objects.get(id=request.session['user_id'])
     }
-    return render(request, "open_note.html", context)    
+    return render(request, "edit.html", context)    
 
 
 #updates note if any edits were made - to be added when we add in TinyMCE implementation
@@ -39,7 +39,7 @@ def new_note(request):
     context = {
         'user': user,
     }
-    return render(request, "new_note.html", context)
+    return render(request, "new.html", context)
 
 
 #saves newly opened note 
