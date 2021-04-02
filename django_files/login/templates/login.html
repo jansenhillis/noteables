@@ -5,70 +5,25 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Notent Notables</title>
-		​
-		<link
-			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-			crossorigin="anonymous"
-		/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 		{% load static %}
-		<link rel="stylesheet" href="{% static 'login.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/login.css' %}" />
 	</head>
-
 	<body>
 		<div class="wrapper">
-			<div class="container-reg">
+			<div class="container register hidden">
 				<form action="register/" method="POST">
 					{% csrf_token %}
 					<h1>Registration</h1>
-					<label for="first_name"></label>
-					<input
-						type="text"
-						id="first_name"
-						name="first_name"
-						placeholder="First Name"
-					/>
-					<label for="last_name"></label>
-					<input
-						type="text"
-						id="last_name"
-						name="last_name"
-						placeholder="Last Name"
-					/>
-
-					<label for="reg_email"></label>
-					<input
-						type="email"
-						id="reg_email"
-						name="reg_email"
-						placeholder="Email"
-					/>
-
-					<label for="reg_pw"></label>
-					<input
-						type="password"
-						id="reg_pw"
-						name="reg_pw"
-						placeholder="Password"
-					/>
-
-					<label for="reg_confirm_pw"></label>
-					<input
-						type="password"
-						id="reg_confirm_pw"
-						name="reg_confirm_pw"
-						placeholder="Confirm Password"
-					/>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary" style="background-color: #4c75a3;">
-							Register
-						</button>
-						<button type="submit" class="btn btn-button" style="background-color: #4c75a3;">
-							Log in
-						</button>
-					</div>
+					<input type="text" id="first_name" name="first_name" placeholder="First Name" />
+					<input type="text" id="last_name" name="last_name" placeholder="Last Name" />
+					<input type="email" id="reg_email" name="reg_email" placeholder="Email" />
+					<input type="password" id="reg_pw" name="reg_pw" placeholder="Password" />
+					<input type="password" id="reg_confirm_pw" name="reg_confirm_pw" placeholder="Confirm Password" />
+					<button type="submit" class="btn btn-primary">Register</button>
+					<div class="not reg-note">Already have account?</div>
+					<a href="javascript:openwindow()">Sign in</a>
+					<!-- <div class="not reg-sign-in">Sign in</div> -->
 				</form>
 				<div class="message_wrapper">
 					{% if messages %}
@@ -80,62 +35,31 @@
 					{% endif %}
 				</div>
 			</div>
-			<br />
-
-			<div class="container-log hidden">
-				<form action="login" method="POST">
+			<div class="container login">
+				<form action="login/" method="POST">
 					{% csrf_token %}
-					<button class="close-window">&times;</button>
 					<h1>Login</h1>
-					<label for="login_email"></label>
-					<input
-						type="text"
-						id="login_email"
-						name="login_email"
-						placeholder="Email"
-					/>
-
-					<label for="login_pw"></label>
-					<input
-						type="password"
-						id="login_pw"
-						name="login_pw"
-						placeholder="Password"
-					/>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary" style="background-color: #4c75a3;">
-							Log In
-						</button>
-
-						<div class="message_wrapper">
-							{% if messages %}
-							<ul class="messages">
-								{% for msg in messages %}
-								<li>{{ msg }}</li>
-								{% endfor %}
-							</ul>
-							{% endif %}
-						</div>
+					<input type="text" id="login_email" name="login_email" placeholder="Email" />
+					<input type="password" id="login_pw" name="login_pw" placeholder="Password" />
+					<button type="submit" class="btn btn-primary">Log In</button>
+					<div class="not log-note">Don't have an account?</div>
+					<div class="not log-sign-in">Create your account</div>
+					<div class="message_wrapper">
+						{% if messages %}
+						<ul class="messages">
+							{% for msg in messages %}
+							<li>{{ msg }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="overlay hidden"></div>
-		<script
-			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-			crossorigin="anonymous"
-		></script>
+		<script src="{% static 'js/script.js' %}"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>
