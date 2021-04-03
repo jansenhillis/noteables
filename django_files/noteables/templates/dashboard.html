@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Dashboard</title>
+		<title>Notent Noteables Dashboard</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 		<!-- {% load static %} -->
 		<link rel="stylesheet" href="{% static 'css/dash.css' %}" />
@@ -16,15 +16,41 @@
 				Notent Noteables
 			</a>
 			<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
-				<p>Hello, Fellow User</p>
+				Hello, Fellow User
 				<button type="submit" class="btn btn-link">Logout</button>
 			</form>
 		</nav>
 
 
 		<div class="container">
-			<h1>My Noteables</h1>
-			<button type="button" class="btn btn-success">New</button>
+			<div class="note_nav">
+				<h1>My Noteables</h1>
+				<form action="{% url 'new_note' %}" method="GET" class="form-inline"> {% csrf_token %}
+					<button type="submit" class="btn btn-success">New</button>
+				</form>
+			</div>
+			
+			<table class="table">
+				<tr>
+					<th scope="col">Destination</th>
+					<th scope="col">Travel Start</th>
+					<th scope="col">Travel End</th>
+					<th scope="col">Do you want to join?</th>
+					<th scope="col">Do you want to join?</th>
+				</tr>
+				{% for note in notes %}
+				
+					<tr>
+						<td><img></img></td>
+						<td><a href="#">{{ note.title }}</a></td>
+						<td>{{ note.content }}</td>
+						<td>{{ note.created_by }}</td>
+						<td>controls</td>
+
+					</tr>
+				{% endfor %}
+			</table>
+
 			<div class="row">
 				<div class="col-sm">
 				One of three columns

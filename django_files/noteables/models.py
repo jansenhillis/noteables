@@ -8,20 +8,20 @@ import re
 class NoteManager(models.Manager):
     def validator(self, postData):
         errors = {}
-        if len(postData['note_content']) < 1:
-            errors['note_content'] = 'Something needs to be written in the notes content.'
-        if len(postData['note_title']) < 1:
-            errors['note_title'] = 'Note needs a title.'
+        if len(postData['content']) < 1:
+            errors['content'] = 'Something needs to be written in the notes content.'
+        if len(postData['title']) < 1:
+            errors['title'] = 'Note needs a title.'
         return errors
 
 
 class Note(models.Model):
     created_by = models.ForeignKey(User, related_name="notes_created", on_delete=models.CASCADE)
-    note_content = models.CharField(max_length=1000)
-    note_title = models.CharField(max_length=255)
+    content = models.CharField(max_length=1000)
+    title = models.filter(id=request.session['user_id'])CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = NoteManager()
 
     def __repr__(self):
-        return f"<Note object: ({self.id}) {self.note_title}"
+        return f"<Note object: ({self.id}) {self.title}"

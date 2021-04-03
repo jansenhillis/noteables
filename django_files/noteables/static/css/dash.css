@@ -1,5 +1,5 @@
 * {
-    /* outline: 1px red solid; */
+    outline: 1px red solid;
 }
 
 .container {
@@ -7,6 +7,11 @@
 }
 
 h1 {
-    display: inline-block;
-    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.note_nav {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
 }

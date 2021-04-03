@@ -1,0 +1,9 @@
+* {
+    outline: 1px red solid;
+}
+
+#icon_type {
+    display: inline-block;
+    max-width: 30px;
+    /* height: auto; */
+}
