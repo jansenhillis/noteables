@@ -1,9 +1,44 @@
 * {
-    outline: 1px red solid;
+    /* outline: 1px red solid; */
 }
 
 #icon_type {
     display: inline-block;
     max-width: 30px;
     /* height: auto; */
+}
+
+.container {
+    margin-top: 20px;
+}
+
+
+h1 {
+    margin-right: 20px;
+}
+
+.note_nav {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+
+.media .avatar {
+    width: 34px;
+}
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+.button_group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wider {
+    width: 100px;
 }

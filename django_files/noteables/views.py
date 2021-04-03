@@ -41,7 +41,7 @@ def delete_note(request, id):
 #opens a new note
 @authenticate_user
 def new_note(request):
-    user = User.objects.get(id=request.session['user_id'])
+    user = User.objects.get(pk=request.session['user_id'])
     context = {
         'user': user,
     }
@@ -56,10 +56,10 @@ def save_note(request):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/new_note') # BUG: users entire note will be erased if there's a save error - oops :(
+        return redirect('new_note') # BUG: users entire note will be erased if there's a save error (forgetting a title)- oops :(
 
     user = User.objects.get(id=request.session['user_id'])
-    note = Note.objects.create(title=request.POST['title'], content=request.POST['content'], created_by= user)
+    note = Note.objects.create(title=request.POST['title'], content=request.POST['content'], created_by=user)
     return redirect('/noteables')
 
 
