@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Notent Noteables Dashboard</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-		<!-- {% load static %} -->
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-	</head>
-	<body>
-		<nav class="navbar navbar-light bg-light">
-			<a class="navbar-brand" href="{% url 'index' %}">
-				<img src="{% static 'img/note-1.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-				Notent Noteables
-			</a>
-			<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
-				Hello, Fellow User
-				<button type="submit" class="btn btn-link">Logout</button>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Notent Noteables Dashboard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<!-- {% load static %} -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="{% url 'index' %}">
+			<img src="{% static 'img/note-1.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+			Notent Noteables
+		</a>
+		<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
+			Hello, Fellow User
+			<button type="submit" class="btn btn-link">Logout</button>
+		</form>
+	</nav>
+
+
+	<div class="container">
+		<div class="note_nav">
+			<h1>My Noteables</h1>
+			<form action="{% url 'new_note' %}" method="POST" class="form-inline"> {% csrf_token %}
+				<button type="submit" class="btn btn-success">New</button>
 			</form>
-		</nav>
-
-
-		<div class="container">
-			<div class="note_nav">
-				<h1>My Noteables</h1>
-				<form action="{% url 'new_note' %}" method="POST" class="form-inline"> {% csrf_token %}
-					<button type="submit" class="btn btn-success">New</button>
-				</form>
-			</div>
-			
+		</div>
+		<div class="note_box">
 			{% for note in notes %}
-				<div class="row">
-					<div class="col-sm">
-						<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top" alt="">
-					</div>
-					<div class="col-sm">
-						<a href="{% url 'open_note' note.id %}">{{ note.title }}</a>
-					</div>
-					<div class="col-sm">
-						{{ note.content }}
-					</div>
-					<div class="col-sm">
-						{{ note.created_by }}
-					</div>
-					<div class="col-sm">
-						controls
-					</div>
+			<div class="row">
+				<div class="col-sm">
+					<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top"
+						alt="">
 				</div>
+				<div class="col-sm">
+					<a href="{% url 'open_note' note.id %}">{{ note.title }}</a>
+				</div>
+				<div class="col-sm">
+					{{ note.content }}
+				</div>
+				<div class="col-sm">
+					{{ note.created_by }}
+				</div>
+				<div class="col-sm">
+					controls
+				</div>
+			</div>
 			{% endfor %}
-
-			
 		</div>
 
-	</body>
+	</div>
+
+</body>
+
 </html>
