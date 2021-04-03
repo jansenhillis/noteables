@@ -17,11 +17,12 @@
 		<h3>{{ note.title }}</h3>
 		<h3>{{ user.first }} {{ user.last }}</h3>
 
-		<button type="submit">update</button>
-		<button type="submit">discard</button>
+		<a href="/noteables">Discard</a>
 
-		<form method="post">
-			<textarea id="mytextarea">{{ note.content }}</textarea>
+		<form method="post" action="{% url 'update_note' note.id %}">
+			{% csrf_token %}
+			<textarea id="mytextarea" name='content'>{{ note.content }}</textarea>
+			<button type="submit" class="btn btn-primary wider">Save</button>
 		</form>
 		<script>
 			tinymce.init({
