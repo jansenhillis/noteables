@@ -7,7 +7,13 @@ from .models import *
 
 @authenticate_user
 def index(request):
-    return render(request, 'dashboard.html')
+    notes = Note.objects.all()  
+    user = User.objects.get(pk=request.session['user_id'])
+    context = {
+        "notes": notes,
+        "user": user,
+    }
+    return render(request, 'dashboard.html', context)
 
 
 #opens a specific note to view or edit
@@ -46,14 +52,15 @@ def new_note(request):
 @authenticate_user
 def save_note(request):
     errors = Note.objects.validator(request.POST)
+
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/new_note')
+        return redirect('/new_note') # BUG: users entire note will be erased if there's a save error - oops :(
 
     user = User.objects.get(id=request.session['user_id'])
-    note = Note.objects.create(note_title=request.POST['note_title'], note_content=request.POST['note_content'], created_by= user)
-    return redirect('/')
+    note = Note.objects.create(note_title=request.POST['title'], note_content=request.POST['content'], created_by= user)
+    return redirect('/noteables')
 
 
 #goes to homepage 

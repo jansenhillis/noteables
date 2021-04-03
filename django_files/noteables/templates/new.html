@@ -23,21 +23,28 @@
 
 
 		<div class="container">
-			<h1>My Noteables</h1>
-			<button type="button" class="btn btn-success">New</button>
-			<div class="row">
+			<div class="row ">
 				<div class="col-sm">
-				One of three columns
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm">
-				One of three columns
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm">
-				One of three columns
+					
+				
+				
+				<form action="{% url 'save_note' %}" method="POST" class="form-inline"> {% csrf_token %}
+					<img src="{% static 'img/note-1.png' %}" class="d-inline-block align-top" id="icon_type" alt="">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Noteable</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Unsaved New Note*</li>
+						</ol>
+					</nav>
+					<input id="note_title" name="note_title" type="text">
+					<input id="note_content" name="note_content" type="text">
+					<button id="" type="submit" class="btn btn-link">Save</button>
+					<button type="input" class="btn btn-link">Delete</button>
+				</form>				
+				
+					<!-- breadcrumb
+				title textfield
+				disabled author field -->
 				</div>
 			</div>
 		</div>
