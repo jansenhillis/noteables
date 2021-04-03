@@ -9,20 +9,19 @@
 		<!-- {% load static %} -->
 		<link rel="stylesheet" href="{% static 'css/edit.css' %}" />
 		<script src='https://cdn.tiny.cloud/1/w3ykob2x8q7qaowapdtq6lu93t7vjonkpfa59j3zfubbrpk5/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
-		
+		<script>tinymce.get("mytextarea").setContent("{{note.content}}");</script>
 	</head>
 	<body>
 		<h1>Edit</h1>
 
 		<h3>{{ note.title }}</h3>
-		<h3>{{ user.first_name }}</h3>
-		<p>{{ note.content }}</p>
+		<h3>{{ user.first }} {{ user.last }}</h3>
 
 		<button type="submit">update</button>
 		<button type="submit">discard</button>
 
 		<form method="post">
-			<textarea id="mytextarea">Hello, World!</textarea>
+			<textarea id="mytextarea">{{ note.content }}</textarea>
 		</form>
 		<script>
 			tinymce.init({
