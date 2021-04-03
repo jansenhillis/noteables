@@ -18,7 +18,7 @@ class NoteManager(models.Manager):
 class Note(models.Model):
     created_by = models.ForeignKey(User, related_name="notes_created", on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
-    title = models.filter(id=request.session['user_id'])CharField(max_length=255)
+    title = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = NoteManager()

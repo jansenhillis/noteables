@@ -59,7 +59,7 @@ def save_note(request):
         return redirect('/new_note') # BUG: users entire note will be erased if there's a save error - oops :(
 
     user = User.objects.get(id=request.session['user_id'])
-    note = Note.objects.create(note_title=request.POST['title'], note_content=request.POST['content'], created_by= user)
+    note = Note.objects.create(title=request.POST['title'], content=request.POST['content'], created_by= user)
     return redirect('/noteables')
 
 
