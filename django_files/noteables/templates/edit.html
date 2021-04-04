@@ -12,17 +12,17 @@
 		<script>tinymce.get("mytextarea").setContent("{{note.content}}");</script>
 	</head>
 	<body>
-		<h1>Edit</h1>
+		<h3>Title: {{ note.title }}</h3> 
+		<h3>Author: {{ user.first }} {{ user.last }}</h3>
 
-		<h3>{{ note.title }}</h3>
-		<h3>{{ user.first }} {{ user.last }}</h3>
-
-		<a href="/noteables">Discard</a>
+		
 
 		<form method="post" action="{% url 'update_note' note.id %}">
 			{% csrf_token %}
+			Edit Title: <input type="text" name="title" value="{{ note.title }}">
 			<textarea id="mytextarea" name='content'>{{ note.content }}</textarea>
 			<button type="submit" class="btn btn-primary wider">Save</button>
+			<a href="/noteables">Discard</a>
 		</form>
 		<script>
 			tinymce.init({
