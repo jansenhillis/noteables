@@ -34,13 +34,23 @@
 		</div>
 		<div class="note_box rounded">
 			{% for note in notes %}
-			<div class="row bg-light">
-				<div class="col-sm">
-					<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top"
-						alt="">
-				</div>
-				<div class="col-sm">
-					<a href="{% url 'open_note' note.id %}">{{ note.title }}</a>
+				<div class="row">
+					<div class="col-sm">
+						<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top" alt="">
+					</div>
+					<div class="col-sm">
+						<a href="{% url 'open_note' note.id %}">{{ note.title }}</a>
+					</div>
+					<div class="col-sm">
+						<!-- {{ note.content }} -->
+						<!-- Add a short few words maybe -->
+					</div>
+					<div class="col-sm">
+						{{ note.created_by }}
+					</div>
+					<div class="col-sm">
+						controls
+					</div>
 				</div>
 				<div class="col-sm">
 					{{ note.content }}

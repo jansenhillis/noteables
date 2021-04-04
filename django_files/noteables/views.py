@@ -27,8 +27,21 @@ def open_note(request, id):
 
 
 #updates note if any edits were made - to be added when we add in TinyMCE implementation
-# def update_note(request):
-#     return redirect('/')
+def update_note(request, id):
+    if request.method == "POST": 
+        errors = Note.objects.validator(request.POST)
+        if errors:
+            for error in errors.values():
+                messages.error(request, error)
+            return redirect('/open_note')
+        else:
+            note = Note.objects.get(id=id)
+            
+            note.title = request.POST['title']
+            note.content = request.POST['content']
+            note.save()
+            return redirect('/noteables')
+    return redirect('/noteables')
 
 
 #deletes a note from the database on dashboard
