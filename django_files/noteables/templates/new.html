@@ -20,7 +20,7 @@
 				Notent Noteables
 			</a>
 			<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
-				Hello, Fellow User
+				Hello, {{user.first}}
 				<button type="submit" class="btn btn-link">Logout</button>
 			</form>
 		</nav>

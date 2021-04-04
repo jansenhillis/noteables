@@ -48,3 +48,8 @@ h1 {
     padding: 5px;
     margin-bottom: 30px;
 }
+
+.col a {
+    text-decoration: none;
+    color: gray;
+}
