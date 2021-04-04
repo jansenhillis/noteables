@@ -42,7 +42,9 @@ h1 {
 .wider {
     width: 100px;
 }
-.note_box {
-    margin-bottom: 30px;
+.row {
+    text-align: ;
     border: 2px solid #c7d9ea;
+    padding: 5px;
+    margin-bottom: 30px;
 }
