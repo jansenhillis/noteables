@@ -35,7 +35,7 @@ def open_note(request, id):
 @authenticate_user
 def delete_note(request, id):
     Note.objects.get(id=id).delete()
-    return redirect('/')
+    return redirect('index')
 
 
 #opens a new note
