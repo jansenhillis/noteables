@@ -16,9 +16,9 @@ const checkFirstname = () => {
 	const firstname = firstnameEl.value.trim();
 
 	if (!isRequired(firstname)) {
-		showError(firstnameEl, 'firstname cannot be blank.');
+		showError(firstnameEl, 'First name cannot be blank.');
 	} else if (!isBetween(firstname.length, min, max)) {
-		showError(firstnameEl, `firstname must be between ${min} and ${max} characters.`);
+		showError(firstnameEl, `First name must be between ${min} and ${max} characters.`);
 	} else {
 		showSuccess(firstnameEl);
 		valid = true;
@@ -34,9 +34,9 @@ const checkLastname = () => {
 	const lastname = lastnameEl.value.trim();
 
 	if (!isRequired(lastname)) {
-		showError(lastnameEl, 'lastname cannot be blank.');
+		showError(lastnameEl, 'Last name cannot be blank.');
 	} else if (!isBetween(lastname.length, min, max)) {
-		showError(lastnameEl, `lastname must be between ${min} and ${max} characters.`);
+		showError(lastnameEl, `Last name must be between ${min} and ${max} characters.`);
 	} else {
 		showSuccess(lastnameEl);
 		valid = true;
@@ -66,7 +66,7 @@ const checkPassword = () => {
 	if (!isRequired(password)) {
 		showError(passwordEl, 'Password cannot be blank.');
 	} else if (!isPasswordSecure(password)) {
-		showError(passwordEl, 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase character, 1 number, and 1 spacia; character in (!@#$%^&*)');
+		showError(passwordEl, 'Password must has at least 8 characters. 1 lowercase character, 1 uppercase character, 1 number, and 1 special character in (!@#$%^&*)');
 	} else {
 		showSuccess(passwordEl);
 		valid = true;
@@ -135,9 +135,6 @@ const showSuccess = input => {
 
 //Modifying the submit event handler
 form.addEventListener('submit', function (e) {
-	// Prevent the form from submitting
-	e.preventDefault();
-
 	//validate forms
 	let isFirstnameValid = checkFirstname(),
 		isLastnameValid = checkLastname(),
