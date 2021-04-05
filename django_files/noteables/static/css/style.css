@@ -23,7 +23,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-
 .media .avatar {
     width: 34px;
 }
@@ -37,19 +36,16 @@ h1 {
 .button_group {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .wider {
     width: 100px;
 }
 .row {
-    text-align: ;
-    border: 2px solid #c7d9ea;
-    padding: 5px;
+    border: 2px solid #e4e4f9;
+
     margin-bottom: 30px;
 }
 
-.col a {
-    text-decoration: none;
-    color: gray;
-}
+

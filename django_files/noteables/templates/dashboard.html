@@ -8,7 +8,7 @@
 	<title>Notent Noteables Dashboard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-	<!-- {% load static %} -->
+	{% load static %}
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
@@ -18,15 +18,18 @@
 			<img src="{% static 'img/note-1.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
 			Notent Noteables
 		</a>
+
 		<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
-			Hello, {{user.first}}
-			<button type="submit" class="btn btn-"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-				<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-				<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-			</svg></button>
+			Hello, {{user.first}}!
+			<button type="submit" class="btn btn-link mx-2">Logout 
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right text-center" viewBox="0 0 16 12">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+				</svg>
+			</button>
 		</form>
 	</nav>
-
+<!-- END OF NAVBAR -->
 
 	<div class="container">
 		<div class="note_nav">
@@ -35,19 +38,26 @@
 				<button type="submit" class="btn btn-warning text-white">New</button>
 			</form>
 		</div>
+	<!-- end of title head -->
+
 		<div class="note_box">
 			{% for note in notes %}
 			<div class="row rounded text-muted bg-light">
-				<div class="col-sm mt-2">
-					<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top"
+
+	<!-- Note name -->
+				<div class="col-sm justify-content-sm-right mt-2">
+					<img src="{% static 'img/note-1.png' %}" width="25" height="25" class="d-inline-block align-top mr-2"
 						alt="">
 					<a href="{% url 'open_note' note.id %}">{{ note.title }}</a>
 				</div>
+
+	<!-- Note created by -->
 				<div class="col-sm text-center mt-2">
 					{{ note.created_by.first }} {{ note.created_by.last }}
 				</div>
 
-				<div class="col-sm text-right">
+	<!-- trashbox -->
+				<div class="col-sm text-lg-right">
 					<a href="{% url 'delete' note.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="45"
 							fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 							<path
