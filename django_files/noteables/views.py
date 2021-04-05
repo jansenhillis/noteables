@@ -4,11 +4,11 @@ from noteables_project.decorators import authenticate_user
 from login.models import *
 from .models import *
 
-
+#views the dashboard with a list of notes
 @authenticate_user
 def index(request):
-    notes = Note.objects.all()  
     user = User.objects.get(pk=request.session['user_id'])
+    notes = Note.objects.filter(created_by=user) 
     context = {
         "notes": notes,
         "user": user,
@@ -19,9 +19,15 @@ def index(request):
 #opens a specific note to view or edit
 @authenticate_user
 def open_note(request, id):
+    user = User.objects.get(id=request.session['user_id'])
+    note = Note.objects.get(id=id)
+
+    if (note.created_by != user):
+        return redirect("/noteables")
+
     context = {
-        'note': Note.objects.get(id=id),
-        'user': User.objects.get(id=request.session['user_id'])
+        'note': note,
+        'user': user
     }
     return render(request, "edit.html", context)    
 
