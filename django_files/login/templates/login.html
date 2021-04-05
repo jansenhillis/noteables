@@ -12,15 +12,32 @@
 	<body>
 		<div class="wrapper">
 			<div class="container register hidden">
-				<form action="register/" method="POST">
+				<form action="register/" id="signup" method="POST">
 					{% csrf_token %}
 					<h1>Registration</h1>
-					<input type="text" id="first_name" name="first_name" placeholder="First Name" />
-					<input type="text" id="last_name" name="last_name" placeholder="Last Name" />
-					<input type="email" id="reg_email" name="reg_email" placeholder="Email" />
-					<input type="password" id="reg_pw" name="reg_pw" placeholder="Password" />
-					<input type="password" id="reg_confirm_pw" name="reg_confirm_pw" placeholder="Confirm Password" />
-					<button type="submit" class="btn btn-primary">Register</button>
+					<div class="form-field">
+						<input type="text" id="first_name" name="first_name" placeholder="First Name" autocomplete="off" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<input type="text" id="last_name" name="last_name" placeholder="Last Name" autocomplete="off" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<input type="email" id="reg_email" name="reg_email" placeholder="Email" autocomplete="off" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<input type="password" id="reg_pw" name="reg_pw" placeholder="Password" autocomplete="off" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<input type="password" id="reg_confirm_pw" name="reg_confirm_pw" placeholder="Confirm Password" autocomplete="off" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<button type="submit" class="btn btn-primary">Register</button>
+					</div>
 					<div class="not reg-note">Already have account?</div>
 					<a href="#modal" class="close-modal">Sign in</a>
 				</form>
@@ -49,6 +66,7 @@
 		</div>
 		<div class="overlay hidden"></div>
 		<script src="{% static 'js/script.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
