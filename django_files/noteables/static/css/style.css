@@ -12,7 +12,13 @@
     margin-top: 20px;
 }
 
-
+#note_info{
+    border: 0;
+    color: gray;
+}
+#note_info_container{
+    margin-top: 0;
+}
 h1 {
     margin-right: 20px;
 }
@@ -44,8 +50,7 @@ h1 {
 }
 .row {
     border: 2px solid #e4e4f9;
-
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 

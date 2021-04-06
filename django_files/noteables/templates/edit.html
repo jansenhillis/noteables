@@ -47,7 +47,19 @@
 					<form method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
 						<div class="form-group">
 							<input id="title" name="title" class="form-control form-control-lg" type="text" value="{{ note.title }}">
-							Author: {{ user.first }} {{ user.last }}
+							<div id="note_info_container"class="container">
+								<div id="note_info" class="row">
+								  <div class="col-sm">
+									<p>Author: {{ user.first }} {{ user.last }}</p>
+								  </div>
+								  <div class="col-sm">
+									<p>Date Created: {{ note.created_at }}</p>
+								  </div>
+								  <div class="col-sm">
+									<p>Last Updated: {{ user.updated_at }}</p>
+								  </div>
+								</div>
+							  </div>
 							<div class="media mt-3 shadow-textarea">
 								<div class="media-body">	
 									<div class="form-group basic-textarea rounded-corners">

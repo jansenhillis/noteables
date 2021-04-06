@@ -56,6 +56,11 @@
 					{{ note.created_by.first }} {{ note.created_by.last }}
 				</div>
 
+	<!-- Note created date -->
+				<div class="col-sm text-center mt-2">
+					{{ note.created_at}} (UTC)
+				</div>
+
 	<!-- trashbox -->
 				<div class="col-sm text-lg-right">
 					<a href="{% url 'delete' note.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="45"
