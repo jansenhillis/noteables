@@ -19,16 +19,21 @@
 				Notent Noteables
 			</a>
 			<form action="{% url 'logout' %}" method="GET" class="form-inline"> {% csrf_token %}
-				Hello, {{user.first}}
-				<button type="submit" class="btn btn-link">Logout</button>
+				Hello, {{user.first}}!
+				<button type="submit" class="btn btn-link ml-4">Logout 
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right text-center" viewBox="0 0 16 12">
+					<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+					<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+					</svg>
+				</button>
 			</form>
 		</nav>
 
 		<!-- Site Map of sorts - where we are in relation to the dashboard -->
 		<nav aria-label="breadcrumb" id="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Unsaved New Note*</li>
+				<li class="breadcrumb-item"><a href="{% url 'index' %}">Dashboard</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ note.title }}</li>
 			</ol>
 		</nav>
 
@@ -48,19 +53,19 @@
 									<div class="form-group basic-textarea rounded-corners">
 										<textarea class="form-control z-depth-1" id="content" name="content">{{ note.content }}</textarea>
 									</div>
-								</div>`
+								</div>
 							</div>	
 						</div>
-
-						<div class="form-group form-check">
+					<!-- Not functional at the moment, delete later? -->
+						<!-- <div class="form-group form-check">
 							<label class="form-check-label">
 								<input class="form-check-input" type="checkbox"> Save and Create a New Note (Not functional)
 							</label>
-						</div>
+						</div> -->
 
 						<div class="button_group">
 							<button type="submit" class="btn btn-primary wider">Save</button>
-							<button type="submit" class="btn btn-outline-danger" formaction="{% url 'index' %}">Discard</button>	
+							<button type="submit" class="btn btn-outline-danger" formaction="{% url 'index' %}">Cancel changes</button>	
 						</div>
 
 						<div class="message_wrapper">
@@ -90,6 +95,6 @@
 				tinycomments_author: 'Author name',
 			});
 		</script>	
-		
+		</div>
 	</body>
 </html>
