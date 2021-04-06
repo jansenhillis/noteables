@@ -44,7 +44,7 @@
 				<div class="media-body">			
 
 					<!-- Edit Note Form -->
-					<form method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
+					<form id="edit_note_form" method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
 						<div class="form-group">
 							<input id="title" name="title" class="form-control form-control-lg" type="text" value="{{ note.title }}">
 							<div id="note_info_container"class="container-fluid">
@@ -99,7 +99,11 @@
 			});
 			const title = document.querySelector('#title')
 			document.querySelector('#title').oninput = function() {
-				title_crumb.innerHTML = title.value;
+				if (title.value) {
+					title_crumb.innerHTML = title.value;
+				} else {
+					title_crumb.innerHTML = "Unsaved Note*";
+				}
 			}
 		</script>	
 		</div>

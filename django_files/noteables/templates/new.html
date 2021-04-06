@@ -55,7 +55,7 @@
 				<div class="media-body">
 
 					<!-- New Note Form -->
-					<form action="{% url 'save_note' %}" method="POST"> {% csrf_token %}
+					<form id="new_note_form" action="{% url 'save_note' %}" method="POST"> {% csrf_token %}
 						<div class="form-group">
 							<input id="title" name="title" class="form-control form-control-lg" type="text" value="{{ title }}" placeholder="Title goes here">
 							Author: {{ user.first }} {{ user.last }}
@@ -90,9 +90,13 @@
 			});
 			const title = document.querySelector('#title')
 			document.querySelector('#title').oninput = function() {
-				title_crumb.innerHTML = title.value;
+				if (title.value) {
+					title_crumb.innerHTML = title.value;
+				} else {
+					title_crumb.innerHTML = "Unsaved New Note*";
+				}
 			}
-		
+
 		</script>
 	</body>
 </html>
