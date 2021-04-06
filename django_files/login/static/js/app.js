@@ -8,13 +8,13 @@ const logPasswordEl = document.querySelector('#login_pw'); //TODO
 const confirmPasswordEl = document.querySelector('#reg_confirm_pw');
 
 const form = document.querySelector('#signup');
-const logForm = document.querySelector('#login'); //TODO
+const submit_btn = document.querySelector('#submit_btn');
 
 // Develop input field validating functions
 // Validate firstname
 const checkFirstname = () => {
 	let valid = false;
-	const min = 3,
+	const min = 1,
 		max = 25;
 	const firstname = firstnameEl.value.trim();
 
@@ -32,7 +32,7 @@ const checkFirstname = () => {
 // Validate lastname
 const checkLastname = () => {
 	let valid = false;
-	const min = 3,
+	const min = 1,
 		max = 25;
 	const lastname = lastnameEl.value.trim();
 
@@ -187,23 +187,31 @@ form.addEventListener('submit', function (e) {
 
 	//submit to the server if the form is valid
 	if (isFormValid) {
+		return true;
+	} else {
+		e.preventDefault();
+		// show error on registration page
+		showError(submit_btn, 'Please try again.');
 	}
 });
 
-logForm.addEventListener('submit', function (e) {
-	// // Prevent the form from submitting
-	e.preventDefault(); //TODO
+// $('#signup').submit(function(){     // listen for when the #myForm element is submitted
 
-	//validate forms
-	let isLogEmailValid = checkLogEmail(),
-		isLogPasswordValid = checkLogPassword();
+// 	e.preventDefault();
+// 	var $form = $(this);
 
-	let isFormValid = isLogPasswordValid && isLogEmailValid;
+// 	if (!$form.valid()) return false;
 
-	//submit to the server if the form is valid
-	if (isFormValid) {
-	}
-});
+// 	$.ajax({
+// 		url: '/register',
+// 		method: 'POST',
+// 		data: $('#signup').serialize()
+// 	})
+// 	.done(function(response){
+// 		console.log(response);
+// 	})
+// 	// return false;                // return false to disable the normal submission of the form
+// });
 
 //Debounce () function
 const debounce = (fn, delay = 500) => {
