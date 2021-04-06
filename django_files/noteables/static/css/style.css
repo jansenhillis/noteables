@@ -16,9 +16,11 @@
     border: 0;
     color: gray;
 }
+
 #note_info_container{
     margin-top: 0;
 }
+
 h1 {
     margin-right: 20px;
 }
@@ -48,9 +50,16 @@ h1 {
 .wider {
     width: 100px;
 }
+
 .row {
     border: 2px solid #e4e4f9;
     margin-bottom: 15px;
+    align-items: center;
+    height: 50px;
 }
 
-
+.col-sm {
+    align-items: center;
+    vertical-align: middle;
+    margin: 0;
+}
