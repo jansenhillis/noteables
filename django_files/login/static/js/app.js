@@ -2,10 +2,13 @@
 const firstnameEl = document.querySelector('#first_name');
 const lastnameEl = document.querySelector('#last_name');
 const emailEl = document.querySelector('#reg_email');
+const logEmailEl = document.querySelector('#login_email'); //TODO
 const passwordEl = document.querySelector('#reg_pw');
+const logPasswordEl = document.querySelector('#login_pw'); //TODO
 const confirmPasswordEl = document.querySelector('#reg_confirm_pw');
 
 const form = document.querySelector('#signup');
+const logForm = document.querySelector('#login'); //TODO
 
 // Develop input field validating functions
 // Validate firstname
@@ -59,6 +62,21 @@ const checkEmail = () => {
 	return valid;
 };
 
+//Validate login-Enail  //TODO
+const checkLogEmail = () => {
+	let valid = false;
+	const logEmail = logEmailEl.value.trim();
+	if (!isRequired(logEmail)) {
+		showError(logEmailEl, 'Email cannot be blank.');
+	} else if (!isLogEmailValid(logEmail)) {
+		showError(logEmailEl, 'Email is not valid.');
+	} else {
+		showSuccess(logEmailEl);
+		valid = true;
+	}
+	return valid;
+};
+
 //Validate Password
 const checkPassword = () => {
 	let valid = false;
@@ -69,6 +87,21 @@ const checkPassword = () => {
 		showError(passwordEl, 'Password must has at least 8 characters. 1 lowercase character, 1 uppercase character, 1 number, and 1 special character in (!@#$%^&*)');
 	} else {
 		showSuccess(passwordEl);
+		valid = true;
+	}
+	return valid;
+};
+
+//Validate Login-Password  //TODO
+const checkLogPassword = () => {
+	let valid = false;
+	const password = logPasswordEl.value.trim();
+	if (!isRequired(password)) {
+		showError(logPasswordEl, 'Password cannot be blank.');
+	} else if (!isPasswordSecure(password)) {
+		showError(logPasswordEl, 'Password must has at least 8 characters. 1 lowercase character, 1 uppercase character, 1 number, and 1 special character in (!@#$%^&*)');
+	} else {
+		showSuccess(logPasswordEl);
 		valid = true;
 	}
 	return valid;
@@ -94,6 +127,11 @@ const checkConfirmPassword = () => {
 
 // Develope utility function
 const isEmailValid = email => {
+	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+};
+
+const isLogEmailValid = email => {
 	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(email);
 };
@@ -135,6 +173,9 @@ const showSuccess = input => {
 
 //Modifying the submit event handler
 form.addEventListener('submit', function (e) {
+	// // Prevent the form from submitting
+	e.preventDefault(); //TODO
+
 	//validate forms
 	let isFirstnameValid = checkFirstname(),
 		isLastnameValid = checkLastname(),
@@ -142,7 +183,22 @@ form.addEventListener('submit', function (e) {
 		isPasswordValid = checkPassword(),
 		isConfirmPasswordValid = checkConfirmPassword();
 
-	let isFormValid = isFirstnameValid && isLastnameValid && isEmailValid && isPasswordValid && isConfirmPassword;
+	let isFormValid = isFirstnameValid && isLastnameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
+
+	//submit to the server if the form is valid
+	if (isFormValid) {
+	}
+});
+
+logForm.addEventListener('submit', function (e) {
+	// // Prevent the form from submitting
+	e.preventDefault(); //TODO
+
+	//validate forms
+	let isLogEmailValid = checkLogEmail(),
+		isLogPasswordValid = checkLogPassword();
+
+	let isFormValid = isLogPasswordValid && isLogEmailValid;
 
 	//submit to the server if the form is valid
 	if (isFormValid) {
@@ -178,11 +234,31 @@ form.addEventListener(
 			case 'reg_email':
 				checkEmail();
 				break;
+			// case 'Login_email':// TODO
+			// 	checkLogEmail();
+			// 	break;
 			case 'reg_pw':
 				checkPassword();
 				break;
+			// case 'login_pw': // TODO
+			// 	checkLogPassword();
+			// 	break;
 			case 'reg_confirm_pw':
 				checkConfirmPassword();
+				break;
+		}
+	})
+);
+
+logForm.addEventListener(
+	'input',
+	debounce(function (e) {
+		switch (e.target.id) {
+			case 'Login_email': // TODO
+				checkLogEmail();
+				break;
+			case 'login_pw': // TODO
+				checkLogPassword();
 				break;
 		}
 	})
