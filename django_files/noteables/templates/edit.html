@@ -33,7 +33,7 @@
 		<nav aria-label="breadcrumb" id="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{% url 'index' %}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">{{ note.title }}</li>
+				<li id="title_crumb" class="breadcrumb-item active" aria-current="page">{{ note.title }}</li>
 			</ol>
 		</nav>
 
@@ -47,19 +47,19 @@
 					<form method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
 						<div class="form-group">
 							<input id="title" name="title" class="form-control form-control-lg" type="text" value="{{ note.title }}">
-							<div id="note_info_container"class="container">
+							<div id="note_info_container"class="container-fluid">
 								<div id="note_info" class="row">
-								  <div class="col-sm">
-									<p>Author: {{ user.first }} {{ user.last }}</p>
-								  </div>
-								  <div class="col-sm">
-									<p>Date Created: {{ note.created_at }}</p>
-								  </div>
-								  <div class="col-sm">
-									<p>Last Updated: {{ user.updated_at }}</p>
-								  </div>
+									<div class="col-sm">
+										<p>Author: {{ user.first }} {{ user.last }}</p>
+									</div>
+									<div class="col-sm">
+										<p>Date Created: {{ note.created_at }} (UTC)</p>
+									</div>
+									<div class="col-sm">
+										<p>Last Update: {{ user.updated_at }} (UTC)</p>
+									</div>
+									</div>
 								</div>
-							  </div>
 							<div class="media mt-3 shadow-textarea">
 								<div class="media-body">	
 									<div class="form-group basic-textarea rounded-corners">
@@ -68,12 +68,6 @@
 								</div>
 							</div>	
 						</div>
-					<!-- Not functional at the moment, delete later? -->
-						<!-- <div class="form-group form-check">
-							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox"> Save and Create a New Note (Not functional)
-							</label>
-						</div> -->
 
 						<div class="button_group">
 							<button type="submit" class="btn btn-primary wider">Save</button>
@@ -93,9 +87,6 @@
 
 				</div>
 			</div>
-
-
-		
 		<script>
 			tinymce.init({
 				selector: 'textarea',
@@ -106,6 +97,10 @@
 				tinycomments_mode: 'embedded',
 				tinycomments_author: 'Author name',
 			});
+			const title = document.querySelector('#title')
+			document.querySelector('#title').oninput = function() {
+				title_crumb.innerHTML = title.value;
+			}
 		</script>	
 		</div>
 	</body>

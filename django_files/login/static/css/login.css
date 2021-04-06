@@ -9,8 +9,7 @@ img {
 	max-width: 500px;
 	min-width: 200px;
 	height: auto;
-	margin-bottom: 70px;
-	/* outline: 1px black solid; */
+	margin-bottom: 30px;
 }
 /* .container {
 	box-sizing: border-box;
@@ -71,7 +70,7 @@ img {
 
 .register {
 	z-index: 10;
-	width: 330px;
+	width: 430px;
 	box-shadow: 2px 5px 10px rgba(5, 50, 54, 0.479);
 }
 /* .btn {
@@ -84,10 +83,6 @@ img {
 	text-decoration: underline;
 	border: none;
 } */
-
-.messages {
-	padding-left: 20px;
-}
 
 .messages > li.error {
 	color: red;
@@ -112,7 +107,7 @@ form > label {
 
 form > h1 {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 form > button {
@@ -163,6 +158,7 @@ form > button {
 	padding: 10px;
 	font-size: 16px;
 	width: 180px;
+	margin-top: 20px;
 }
 
 /*  new css */
@@ -210,7 +206,8 @@ body {
 }
 
 .form-field {
-	margin-bottom: 5px;
+	margin-bottom: 15px;
+	border: none;
 }
 
 .form-field label {
@@ -265,4 +262,9 @@ body {
 
 .btn:focus {
 	outline: none;
+}
+
+#submit_btn {
+	display: block;
+	margin: 0 auto;
 }

@@ -47,6 +47,18 @@
 				<form action="login/" id="login" method="POST">
 					{% csrf_token %}
 					<img src="{% static 'img/notent-logo.png' %}" alt="That Notent logo" />
+					<div class="message_wrapper">
+						{% if messages %}
+						
+						<ul class="messages">
+							{% for msg in messages %}
+							<div class="alert alert-warning" role="alert">
+								{{ msg }}
+							</div>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
 					<div class="form-field">
 						<input type="text" id="login_email" name="login_email" placeholder="Email" />
 						<small></small>
@@ -61,15 +73,6 @@
 					</div>
 					<div class="not log-note">Don't have an account?</div>
 					<a href="#modal" class="modal-trigger">Create Account</a>
-					<!-- <div class="message_wrapper">
-						{% if messages %}
-						<ul class="messages">
-							{% for msg in messages %}
-							<li>{{ msg }}</li>
-							{% endfor %}
-						</ul>
-						{% endif %}
-					</div> -->
 				</form>
 			</div>
 		</div>
