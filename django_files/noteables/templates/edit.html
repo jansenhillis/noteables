@@ -39,6 +39,17 @@
 
 		<!-- Main content container - helpful for responsive content -->
 		<div class="container">
+			<div class="message_wrapper">
+				{% if messages %}
+				<ul class="messages">
+					{% for msg in messages %}
+					<div class="alert alert-warning" role="alert">
+						{{ msg }}
+					</div>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
 			<div class="media">
 				<img class="d-flex avatar z-depth-1-half mr-3" src="{% static 'img/note-1.png' %}">
 				<div class="media-body">			
