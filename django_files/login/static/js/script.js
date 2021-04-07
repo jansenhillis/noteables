@@ -16,3 +16,9 @@ const closeModal = function () {
 
 btnOpenModal.addEventListener('click', openModal);
 btnCloseModal.addEventListener('click', closeModal);
+
+window.onclick = function(event) {
+	if (event.target == overlay) {
+		closeModal();
+	}
+};

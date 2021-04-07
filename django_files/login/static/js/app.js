@@ -4,9 +4,9 @@ const lastnameEl = document.querySelector('#last_name');
 const emailEl = document.querySelector('#reg_email');
 const passwordEl = document.querySelector('#reg_pw');
 const confirmPasswordEl = document.querySelector('#reg_confirm_pw');
-
 const form = document.querySelector('#signup');
-const submit_btn = document.querySelector('#submit_btn')
+const submit_btn = document.querySelector('#submit_btn');
+
 
 // Develop input field validating functions
 // Validate firstname
@@ -150,28 +150,9 @@ form.addEventListener('submit', function (e) {
 		return true;
 	} else {
 		e.preventDefault();
-		// show error on registration page
-		showError(submit_btn, "Please try again.")
+		return false;
 	}
 });
-
-// $('#signup').submit(function(){     // listen for when the #myForm element is submitted
-	
-// 	e.preventDefault();
-// 	var $form = $(this);
-
-// 	if (!$form.valid()) return false;
-	
-// 	$.ajax({
-// 		url: '/register',
-// 		method: 'POST',
-// 		data: $('#signup').serialize()
-// 	})
-// 	.done(function(response){
-// 		console.log(response);
-// 	})
-// 	// return false;                // return false to disable the normal submission of the form
-// });
 
 //Debounce () function
 const debounce = (fn, delay = 500) => {

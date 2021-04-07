@@ -44,24 +44,35 @@
 				</form>
 			</div>
 			<div class="container login">
-				<form action="login/" method="POST">
+				<form action="login/" id="login" method="POST">
 					{% csrf_token %}
 					<img src="{% static 'img/notent-logo.png' %}" alt="That Notent logo" />
-
-					<input type="text" id="login_email" name="login_email" placeholder="Email" />
-					<input type="password" id="login_pw" name="login_pw" placeholder="Password" />
-					<button type="submit" class="btn btn-primary">Log In</button>
-					<div class="not log-note">Don't have an account?</div>
-					<a href="#modal" class="modal-trigger">Create Account</a>
 					<div class="message_wrapper">
 						{% if messages %}
+						
 						<ul class="messages">
 							{% for msg in messages %}
-							<li>{{ msg }}</li>
+							<div class="alert alert-warning" role="alert">
+								{{ msg }}
+							</div>
 							{% endfor %}
 						</ul>
 						{% endif %}
 					</div>
+					<div class="form-field">
+						<input type="text" id="login_email" name="login_email" placeholder="Email" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<input type="password" id="login_pw" name="login_pw" placeholder="Password" />
+						<small></small>
+					</div>
+					<div class="form-field">
+						<button type="submit" class="btn btn-primary">Log In</button>
+						<small></small>
+					</div>
+					<div class="not log-note">Don't have an account?</div>
+					<a href="#modal" class="modal-trigger">Create Account</a>
 				</form>
 			</div>
 		</div>

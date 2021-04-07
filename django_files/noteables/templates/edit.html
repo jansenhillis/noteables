@@ -33,21 +33,44 @@
 		<nav aria-label="breadcrumb" id="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{% url 'index' %}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">{{ note.title }}</li>
+				<li id="title_crumb" class="breadcrumb-item active" aria-current="page">{{ note.title }}</li>
 			</ol>
 		</nav>
 
 		<!-- Main content container - helpful for responsive content -->
 		<div class="container">
+			<div class="message_wrapper">
+				{% if messages %}
+				<ul class="messages">
+					{% for msg in messages %}
+					<div class="alert alert-warning" role="alert">
+						{{ msg }}
+					</div>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
 			<div class="media">
 				<img class="d-flex avatar z-depth-1-half mr-3" src="{% static 'img/note-1.png' %}">
 				<div class="media-body">			
 
 					<!-- Edit Note Form -->
-					<form method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
+					<form id="edit_note_form" method="post" action="{% url 'update_note' note.id %}"> {% csrf_token %}
 						<div class="form-group">
 							<input id="title" name="title" class="form-control form-control-lg" type="text" value="{{ note.title }}">
-							Author: {{ user.first }} {{ user.last }}
+							<div id="note_info_container"class="container-fluid">
+								<div id="note_info" class="row">
+									<div class="col-sm">
+										<p>Author: {{ user.first }} {{ user.last }}</p>
+									</div>
+									<div class="col-sm">
+										<p>Date Created: {{ note.created_at }} (UTC)</p>
+									</div>
+									<div class="col-sm">
+										<p>Last Update: {{ user.updated_at }} (UTC)</p>
+									</div>
+									</div>
+								</div>
 							<div class="media mt-3 shadow-textarea">
 								<div class="media-body">	
 									<div class="form-group basic-textarea rounded-corners">
@@ -56,12 +79,6 @@
 								</div>
 							</div>	
 						</div>
-					<!-- Not functional at the moment, delete later? -->
-						<!-- <div class="form-group form-check">
-							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox"> Save and Create a New Note (Not functional)
-							</label>
-						</div> -->
 
 						<div class="button_group">
 							<button type="submit" class="btn btn-primary wider">Save</button>
@@ -81,9 +98,6 @@
 
 				</div>
 			</div>
-
-
-		
 		<script>
 			tinymce.init({
 				selector: 'textarea',
@@ -94,6 +108,14 @@
 				tinycomments_mode: 'embedded',
 				tinycomments_author: 'Author name',
 			});
+			const title = document.querySelector('#title')
+			document.querySelector('#title').oninput = function() {
+				if (title.value) {
+					title_crumb.innerHTML = title.value;
+				} else {
+					title_crumb.innerHTML = "Unsaved Note*";
+				}
+			}
 		</script>	
 		</div>
 	</body>
